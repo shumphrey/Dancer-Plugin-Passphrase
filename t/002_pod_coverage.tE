@@ -10,7 +10,7 @@ plan tests => 1;
 
 # Trustme contains subs that are deprecated, and just wrappers for renamed versions
 pod_coverage_ok(
-    "Dancer2::Plugin::Passphrase",
+    "Dancer::Plugin::Passphrase",
     { trustme => ['as_rfc2307', 'generate_hash', 'raw_hash', 'raw_salt'] },
-    "Dancer2::Plugin::Passphrase has full POD coverage"
+    "Dancer::Plugin::Passphrase has full POD coverage"
 );

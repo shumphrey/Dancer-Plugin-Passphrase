@@ -1,4 +1,4 @@
-package Dancer::Plugin::Passphrase;
+package Dancer2::Plugin::Passphrase;
 
 # ABSTRACT: Passphrases and Passwords as objects for Dancer
 
@@ -18,8 +18,8 @@ hashing function provided by L<Digest>
 =head1 USAGE
 
     package MyWebService;
-    use Dancer ':syntax';
-    use Dancer::Plugin::Passphrase;
+    use Dancer2 ':syntax';
+    use Dancer2::Plugin::Passphrase;
 
     post '/login' => sub {
         my $phrase = passphrase( param('my password') )->generate;
@@ -48,7 +48,7 @@ hashing function provided by L<Digest>
 use strict;
 use feature 'switch';
 
-use Dancer::Plugin;
+use Dancer2::Plugin;
 
 use Carp qw(carp croak);
 use Data::Entropy::Algorithms qw(rand_bits rand_int);
@@ -90,7 +90,7 @@ sub passphrase {
 
     return bless {
         plaintext => $plaintext
-    }, 'Dancer::Plugin::Passphrase';
+    }, 'Dancer2::Plugin::Passphrase';
 }
 
 
@@ -735,7 +735,7 @@ see L<http://training.perl.com/OSCON2011/index.html>
 
 =head1 SEE ALSO
 
-L<Dancer>, L<Digest>, L<Crypt::Eksblowfish::Bcrypt>, L<Dancer::Plugin::Bcrypt>
+L<Dancer2>, L<Digest>, L<Crypt::Eksblowfish::Bcrypt>, L<Dancer::Plugin::Bcrypt>
 
 
 =head1 AUTHOR
