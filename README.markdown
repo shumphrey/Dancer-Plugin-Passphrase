@@ -1,10 +1,10 @@
 # NAME
 
-Dancer::Plugin::Passphrase - Passphrases and Passwords as objects for Dancer
+Dancer2::Plugin::Passphrase - Passphrases and Passwords as objects for Dancer2
 
 # SYNOPSIS
 
-This plugin manages the hashing of passwords for Dancer apps, allowing 
+This plugin manages the hashing of passwords for Dancer2 apps, allowing 
 developers to follow cryptography best practices without having to 
 become a cryptography expert.
 
@@ -14,8 +14,8 @@ hashing function provided by [Digest](https://metacpan.org/module/Digest)
 # USAGE
 
     package MyWebService;
-    use Dancer ':syntax';
-    use Dancer::Plugin::Passphrase;
+    use Dancer2 ':syntax';
+    use Dancer2::Plugin::Passphrase;
 
     post '/login' => sub {
         my $phrase = passphrase( param('my password') )->generate;
@@ -44,7 +44,7 @@ hashing function provided by [Digest](https://metacpan.org/module/Digest)
 
 ## passphrase
 
-Given a plaintext password, it returns a Dancer::Plugin::Passphrase 
+Given a plaintext password, it returns a Dancer2::Plugin::Passphrase 
 object that you can generate a new hash from, or match against a stored hash.
 
 # MAIN METHODS
@@ -134,13 +134,13 @@ The methods are only applicable once you have called `generate`
 
 ## rfc2307
 
-Returns the rfc2307 representation from a `Dancer::Plugin::Passphrase` object.
+Returns the rfc2307 representation from a `Dancer2::Plugin::Passphrase` object.
 
     passphrase('my password')->generate->rfc2307;
 
 ## scheme
 
-Returns the scheme name from a `Dancer::Plugin::Passphrase` object.
+Returns the scheme name from a `Dancer2::Plugin::Passphrase` object.
 
 This is the scheme name as used in the RFC 2307 representation
 
@@ -153,7 +153,7 @@ The scheme name can be any of the following, and will always be capitalized
 
 ## algorithm
 
-Returns the algorithm name from a `Dancer::Plugin::Passphrase` object.
+Returns the algorithm name from a `Dancer2::Plugin::Passphrase` object.
 
 The algorithm name can be anything that is accepted by `Digest-`new($alg)>
 This includes any modules in the `Digest::` Namespace
@@ -162,14 +162,14 @@ This includes any modules in the `Digest::` Namespace
 
 ## cost
 
-Returns the bcrypt cost from a `Dancer::Plugin::Passphrase` object.
+Returns the bcrypt cost from a `Dancer2::Plugin::Passphrase` object.
 Only works when using the bcrypt algorithm, returns undef for other algorithms
 
     passphrase('my password')->generate->cost;
 
 ## salt\_raw
 
-Returns the raw salt from a `Dancer::Plugin::Passphrase` object.
+Returns the raw salt from a `Dancer2::Plugin::Passphrase` object.
 
     passphrase('my password')->generate->salt_raw;
 
@@ -179,13 +179,13 @@ Returns `undef` if there is no salt.
 
 ## hash\_raw
 
-Returns the raw hash from a `Dancer::Plugin::Passphrase` object.
+Returns the raw hash from a `Dancer2::Plugin::Passphrase` object.
 
     passphrase('my password')->generate->hash_raw;
 
 ## salt\_hex
 
-Returns the hex-encoded salt from a `Dancer::Plugin::Passphrase` object.
+Returns the hex-encoded salt from a `Dancer2::Plugin::Passphrase` object.
 
 Can be defined, but false - The empty string is technically a valid salt.
 Returns `undef` if there is no salt.
@@ -194,13 +194,13 @@ Returns `undef` if there is no salt.
 
 ## hash\_hex
 
-Returns the hex-encoded hash from a `Dancer::Plugin::Passphrase` object.
+Returns the hex-encoded hash from a `Dancer2::Plugin::Passphrase` object.
 
     passphrase('my password')->generate->hash_hex;
 
 ## salt\_base64
 
-Returns the base64 encoded salt from a `Dancer::Plugin::Passphrase` object.
+Returns the base64 encoded salt from a `Dancer2::Plugin::Passphrase` object.
 
 Can be defined, but false - The empty string is technically a valid salt.
 Returns `undef` if there is no salt.
@@ -209,7 +209,7 @@ Returns `undef` if there is no salt.
 
 ## hash\_base64
 
-Returns the base64 encoded hash from a `Dancer::Plugin::Passphrase` object.
+Returns the base64 encoded hash from a `Dancer2::Plugin::Passphrase` object.
 
     passphrase('my password')->generate->hash_base64;
 
@@ -401,7 +401,7 @@ see [http://training.perl.com/OSCON2011/index.html](http://training.perl.com/OSC
 
 # SEE ALSO
 
-[Dancer](https://metacpan.org/module/Dancer), [Digest](https://metacpan.org/module/Digest), [Crypt::Eksblowfish::Bcrypt](https://metacpan.org/module/Crypt::Eksblowfish::Bcrypt), [Dancer::Plugin::Bcrypt](https://metacpan.org/module/Dancer::Plugin::Bcrypt)
+[Dancer2](https://metacpan.org/module/Dancer2), [Digest](https://metacpan.org/module/Digest), [Crypt::Eksblowfish::Bcrypt](https://metacpan.org/module/Crypt::Eksblowfish::Bcrypt), [Dancer2::Plugin::Bcrypt](https://metacpan.org/module/Dancer2::Plugin::Bcrypt)
 
 
 
