@@ -84,7 +84,7 @@ object that you can generate a new hash from, or match against a stored hash.
 sub passphrase {
     # Dancer 2 keywords receive a reference to the DSL object as a first param.
     # We don't need it, so get rid of it, and just get the plaintext
-    shift if blessed($_[0]) && $_[0]->isa('Dancer::Core::DSL');
+    shift if blessed($_[0]) && $_[0]->isa('Dancer2::Core::DSL');
 
     my $plaintext = $_[0];
 
